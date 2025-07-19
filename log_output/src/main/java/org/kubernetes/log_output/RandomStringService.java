@@ -22,5 +22,8 @@ public class RandomStringService {
     public void logRandomString() {
         System.out.println(LocalDateTime.now() + " : " + randomString);
     }
+    public String status(){
+        return LocalDateTime.now() + " : " +randomString;
+    }
 }
 
