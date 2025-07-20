@@ -1,15 +1,15 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: log-ingress
+  name: the-project-ingress
 spec:
   rules:
     - http:
         paths:
-          - path: /logOutput
+          - path: /
             pathType: Prefix
             backend:
               service:
-                name: log-service
+                name: course-service
                 port:
-                  number: 8085
+                  number: 80
