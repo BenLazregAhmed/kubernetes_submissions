@@ -15,7 +15,7 @@ public class LogConsumerRestController {
 
     @GetMapping("/status")
     public String getStatus() {
-        return logReaderService.readLastLine();
+        return logReaderService.status();
     }
 }
 

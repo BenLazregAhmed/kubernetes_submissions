@@ -8,7 +8,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="todo" />
-        <module name="log_output_producer" />
       </profile>
       <profile name="Annotation profile for ping-pong" enabled="true">
         <sourceOutputDir name="../the_project/ping-pong/target/generated-sources/annotations" />
@@ -28,13 +27,16 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
         </processorPath>
-        <module name="log_output_consumer" />
+        <module name="log_output" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="log_output_producer" target="21" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="log_output_consumer" options="-parameters" />
+      <module name="log_output" options="-parameters" />
       <module name="log_output_producer" options="-parameters" />
       <module name="ping-pong" options="-parameters" />
       <module name="todo" options="-parameters" />
