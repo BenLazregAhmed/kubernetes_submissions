@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: log-output
+spec:
+  selector:
+    matchLabels:
+      app: log-output
+  template:
+    metadata:
+      labels:
+        app: log-output
+    spec:
+      containers:
+        - name: log-output-producer
+          image: ahmedevops/log_output:producer
+          volumeMounts:
+            - mountPath: /shared
+              name: log-output
+          ports:
+            - containerPort: 8080
+        - name: log-output-consumer
+          image: ahmedevops/log_output:consumer
+          volumeMounts:
+            - mountPath: /shared
+              name: log-output
+          ports:
+            - containerPort: 8085
+      volumes:
+        - name: log-output
+          emptyDir: {}
+

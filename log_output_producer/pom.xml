@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>org.kubernetes</groupId>
-    <artifactId>log_output</artifactId>
+    <artifactId>log_output_producer</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>log_output</name>
     <description>log_output</description>
