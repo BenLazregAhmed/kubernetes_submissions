@@ -13,4 +13,12 @@ spec:
     spec:
       containers:
         - name: course
-          image: ahmedevops/todo
+          image: ahmedevops/todo:1.12
+          volumeMounts:
+            - mountPath: /app/images
+              name: image-cache
+          imagePullPolicy: Always
+      volumes:
+        - name: image-cache
+          persistentVolumeClaim:
+            claimName: todo-claim

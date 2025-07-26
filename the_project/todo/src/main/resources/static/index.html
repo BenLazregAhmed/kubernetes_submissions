@@ -1,48 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hello K8s</title>
+    <meta charset="UTF-8">
+    <title>📸 Kubernetes Image Viewer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
             margin: 0;
-            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #3b82f6, #06b6d4);
-            color: white;
-            height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to bottom right, #2c3e50, #3498db);
+            color: #fff;
             display: flex;
-            align-items: center;
-            justify-content: center;
             flex-direction: column;
-            text-align: center;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            padding: 2rem;
         }
 
         h1 {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-        }
-
-        p {
-            font-size: 1.2rem;
-            color: #e0f2fe;
-        }
-
-        .logo {
-            width: 100px;
+            font-size: 2.5rem;
             margin-bottom: 1rem;
-            animation: spin 6s linear infinite;
+            text-align: center;
         }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .image-container {
+            max-width: 1200px;
+            width: 100%;
+            background-color: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .image-container img {
+            width: 100%;
+            display: block;
+        }
+
+        .info {
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+            text-align: center;
+            opacity: 0.9;
+        }
+
+        button {
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 8px;
+            background-color: #f39c12;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #e67e22;
         }
     </style>
 </head>
 <body>
-<img src="https://upload.wikimedia.org/wikipedia/commons/3/39/Kubernetes_logo_without_workmark.svg" alt="Kubernetes Logo" class="logo">
-<h1>Hello from Kubernetes! 👋</h1>
-<p>This page is served from a pod running in your K8s cluster.</p>
+<h1>🚀 Random Image from Picsum (Cached)</h1>
+
+<div class="image-container">
+    <img src="/images" alt="Random Cached Image">
+</div>
+
+<div class="info">
+    This image is fetched from <code>https://picsum.photos/1200</code> and cached for 10 minutes.<br>
+    On the next request after expiry, a new image is fetched. If the pod restarts, the image is restored from disk.
+</div>
+
+<button onclick="location.reload()">🔁 Refresh</button>
 </body>
 </html>
