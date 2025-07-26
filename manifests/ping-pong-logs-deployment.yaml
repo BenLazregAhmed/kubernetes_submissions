@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ping-pong-logs
+  labels:
+    app: ping-pong-logs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ping-pong-logs
+  template:
+    metadata:
+      name: ping-pong-logs
+      labels:
+        app: ping-pong-logs
+    spec:
+      containers:
+        - name: ping-pong
+          image: ahmedevops/ping-pong:1.11
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8085
+              protocol: TCP
+          volumeMounts:
+            - name: ping-pong-logs-shared
+              mountPath: /shared
+        - name: log-output
+          image: ahmedevops/log_output:1.11
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          volumeMounts:
+            - name: ping-pong-logs-shared
+              mountPath: /shared
+      volumes:
+        - name: ping-pong-logs-shared
+          persistentVolumeClaim:
+            claimName: ping-pong-logs-claim
+      restartPolicy: Always
+      

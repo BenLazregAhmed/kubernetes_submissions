@@ -1,4 +1,4 @@
-package org.kubernetes.log_output_consumer;
+package org.kubernetes.logoutput;
 
 import jakarta.annotation.PostConstruct;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -36,7 +36,7 @@ public class LogReaderService {
     }
 
     public String status() {
-        return LocalDateTime.now() + " : " + randomString+"\n"+"Ping / Pong"+readLastLine();
+        return LocalDateTime.now() + " : " + randomString+"\nPing / Pong "+readLastLine();
     }
 
 }

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ping-pong-logs-service
+spec:
+  type: ClusterIP
+  selector:
+    app: ping-pong-logs
+  ports:
+    - name: ping-pong
+      port: 8080
+      targetPort: 8080
+    - port: 8085
+      targetPort: 8085
+      name: logs
+

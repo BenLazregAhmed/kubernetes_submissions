@@ -5,14 +5,14 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.5.3</version>
+        <version>3.5.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>org.kubernetes</groupId>
-    <artifactId>log_output</artifactId>
+    <artifactId>log-output</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>log_output_consumer</name>
-    <description>log_output_consumer</description>
+    <name>log-output</name>
+    <description>log-output</description>
     <url/>
     <licenses>
         <license/>

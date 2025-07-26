@@ -1,10 +1,10 @@
-package org.kubernetes.log_output_consumer;
+package org.kubernetes.logoutput;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class LogOutputConsumerApplicationTests {
+class LogOutputApplicationTests {
 
     @Test
     void contextLoads() {

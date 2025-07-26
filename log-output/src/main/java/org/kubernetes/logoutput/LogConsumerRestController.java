@@ -1,4 +1,4 @@
-package org.kubernetes.log_output_consumer;
+package org.kubernetes.logoutput;
 
 
 import lombok.RequiredArgsConstructor;

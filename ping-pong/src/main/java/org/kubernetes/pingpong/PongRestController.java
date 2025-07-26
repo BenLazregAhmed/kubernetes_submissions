@@ -10,10 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class PongRestController {
     private final PingPongWriteOnFileService pingPongWriteOnFileService;
-    private int count = -1;
-    @GetMapping("/")
+    @GetMapping("")
     public String pingpong() {
-        count++;
         return "pong"+pingPongWriteOnFileService.getCounter();
     }
 }
