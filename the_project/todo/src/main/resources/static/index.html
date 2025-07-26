@@ -25,12 +25,13 @@
         }
 
         .image-container {
-            max-width: 1200px;
+            max-width: 400px;
             width: 100%;
             background-color: #fff;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            margin-bottom: 1.5rem;
         }
 
         .image-container img {
@@ -39,14 +40,29 @@
         }
 
         .info {
-            margin-top: 1.5rem;
+            margin-top: 1rem;
             font-size: 1.1rem;
             text-align: center;
             opacity: 0.9;
         }
 
-        button {
-            margin-top: 1rem;
+        .todo-section {
+            margin-top: 2rem;
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .todo-section input[type="text"] {
+            width: 70%;
+            padding: 0.5rem;
+            border-radius: 8px;
+            border: none;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .todo-section button {
             padding: 0.5rem 1rem;
             font-size: 1rem;
             border: none;
@@ -54,11 +70,26 @@
             background-color: #f39c12;
             color: #fff;
             cursor: pointer;
+            margin-left: 0.5rem;
             transition: background-color 0.3s ease;
         }
 
-        button:hover {
+        .todo-section button:hover {
             background-color: #e67e22;
+        }
+
+        ul.todo-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 1rem;
+        }
+
+        ul.todo-list li {
+            background-color: rgba(255, 255, 255, 0.1);
+            margin-bottom: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            text-align: left;
         }
     </style>
 </head>
@@ -75,5 +106,17 @@
 </div>
 
 <button onclick="location.reload()">🔁 Refresh</button>
+
+<div class="todo-section">
+    <h2>📝 Add a Todo</h2>
+    <input type="text" placeholder="Enter your todo (max 140 chars)" maxlength="140">
+    <button>Send</button>
+
+    <ul class="todo-list">
+        <li>🚀 Deploy new version to production</li>
+        <li>🔧 Fix image cache issue</li>
+        <li>📦 Add persistent volume support</li>
+    </ul>
+</div>
 </body>
 </html>
