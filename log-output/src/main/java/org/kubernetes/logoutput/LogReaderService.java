@@ -1,8 +1,12 @@
 package org.kubernetes.logoutput;
 
 import jakarta.annotation.PostConstruct;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -12,10 +16,16 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
+@RequiredArgsConstructor
 public class LogReaderService {
 
     private static final String FILE_PATH = "shared/ping-pong-log.txt";
     private String randomString;
+    private final RestTemplate restTemplate;
+    @Value("${ping.host}")
+    private String HOST;
+    @Value("${ping.port}")
+    private int PORT;
 
     public String readLastLine() {
         try {
@@ -36,8 +46,24 @@ public class LogReaderService {
     }
 
     public String status() {
-        return LocalDateTime.now() + " : " + randomString+"\nPing / Pong "+readLastLine();
+        return LocalDateTime.now() + " : " + randomString+"\nPing / Pong "+getPings();
     }
 
+    private int getPings() {
+        String url = UriComponentsBuilder.newInstance()
+                .scheme("http")
+                .host(HOST)
+                .port(PORT)
+                .path("/ping")
+                .toUriString();
+
+        try {
+            return restTemplate.getForObject(url, Integer.class);
+        } catch (Exception e) {
+            // handle failure (log, rethrow, fallback value, etc.)
+            e.printStackTrace();
+            return -1; // or throw new RuntimeException("Ping failed")
+        }
+    }
 }
 

@@ -20,7 +20,6 @@ public class PingPongWriteOnFileService {
     }
     public int getCounter() {
         counter++;
-        logToFile(counter+"");
         return counter;
     }
 }

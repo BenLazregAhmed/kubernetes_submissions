@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ping-pong
+  name: log-output
 spec:
   selector:
     matchLabels:
-      app: ping-pong
+      app: log-output
   template:
     metadata:
       labels:
-        app: ping-pong
+        app: log-output
     spec:
       containers:
-        - name: ping-pong
-          image: ahmedevops/ping-pong:2.1
+        - name: log-output
+          image: ahmedevops/log_output:2.1
