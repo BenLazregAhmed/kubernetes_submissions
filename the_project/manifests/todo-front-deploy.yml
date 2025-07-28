@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-front
+spec:
+  selector:
+    matchLabels:
+      app: todo-front
+  template:
+    metadata:
+      labels:
+        app: todo-front
+    spec:
+      containers:
+        - name: todo-front
+          image: ahmedevops/todo:2.2
+          volumeMounts:
+            - mountPath: /app/images
+              name: image-cache
+          imagePullPolicy: Always
+      volumes:
+        - name: image-cache
+          persistentVolumeClaim:
+            claimName: todo-claim

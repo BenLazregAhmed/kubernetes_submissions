@@ -97,7 +97,7 @@
 <h1>🚀 Random Image from Picsum (Cached)</h1>
 
 <div class="image-container">
-    <img src="/images" alt="Random Cached Image">
+<!--    <img src="/images" alt="Random Cached Image">-->
 </div>
 
 <div class="info">
@@ -109,14 +109,55 @@
 
 <div class="todo-section">
     <h2>📝 Add a Todo</h2>
-    <input type="text" placeholder="Enter your todo (max 140 chars)" maxlength="140">
-    <button>Send</button>
+    <input id="todoInput" type="text" placeholder="Enter your todo (max 140 chars)" maxlength="140">
+    <button onclick="addTodo()">Send</button>
 
-    <ul class="todo-list">
-        <li>🚀 Deploy new version to production</li>
-        <li>🔧 Fix image cache issue</li>
-        <li>📦 Add persistent volume support</li>
+    <ul class="todo-list" id="todoList">
+        <!-- Todos will be loaded dynamically -->
     </ul>
 </div>
+
+<script>
+    const apiUrl = 'http://192.168.250.10:8085/api/todos'; // Change if hosted elsewhere
+
+    async function loadTodos() {
+        const res = await fetch(apiUrl);
+        const todos = await res.json();
+
+        const list = document.getElementById('todoList');
+        list.innerHTML = '';
+        todos.forEach(todo => {
+            const li = document.createElement('li');
+            li.textContent = todo;
+            list.appendChild(li);
+        });
+    }
+
+    async function addTodo() {
+        const input = document.getElementById('todoInput');
+        const text = input.value.trim();
+
+        if (!text || text.length > 140) {
+            alert("Todo must be between 1 and 140 characters.");
+            return;
+        }
+
+        const res = await fetch(apiUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({todo:text})
+        });
+
+        if (res.ok) {
+            input.value = '';
+            loadTodos();
+        } else {
+            alert("Failed to add todo.");
+        }
+    }
+
+    // Initial load
+    loadTodos();
+</script>
 </body>
 </html>

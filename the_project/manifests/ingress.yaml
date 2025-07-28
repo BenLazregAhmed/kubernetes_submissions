@@ -10,6 +10,13 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: course-service
+                name: todo-front-service
                 port:
                   number: 80
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: todo-back-svc
+                port:
+                  number: 8090

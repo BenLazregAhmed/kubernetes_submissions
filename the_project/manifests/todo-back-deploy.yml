@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-back
+spec:
+  selector:
+    matchLabels:
+      app: todo-back
+  template:
+    metadata:
+      labels:
+        app: todo-back
+    spec:
+      containers:
+        - name: todo-front
+          image: ahmedevops/todo-backend:2.2
