@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: info-config
+  namespace: exercises
+data:
+  info.txt: |
+    this text is from file

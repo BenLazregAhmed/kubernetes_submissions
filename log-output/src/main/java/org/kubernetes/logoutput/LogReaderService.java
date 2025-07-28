@@ -20,16 +20,18 @@ import java.util.UUID;
 public class LogReaderService {
 
     private static final String FILE_PATH = "shared/ping-pong-log.txt";
+    private static final String INFO_FILE = "shared/info.txt";
     private String randomString;
     private final RestTemplate restTemplate;
     @Value("${ping.host}")
     private String HOST;
     @Value("${ping.port}")
     private int PORT;
-
-    public String readLastLine() {
+    @Value("${config.map.env.message}")
+    private String envMessage;
+    public String readLastLine(String path) {
         try {
-            List<String> lines = Files.readAllLines(Paths.get(FILE_PATH));
+            List<String> lines = Files.readAllLines(Paths.get(path));
             return lines.isEmpty() ? "No data yet." : lines.get(lines.size() - 1);
         } catch (IOException e) {
             return "Error reading file: " + e.getMessage();
@@ -46,7 +48,11 @@ public class LogReaderService {
     }
 
     public String status() {
-        return LocalDateTime.now() + " : " + randomString+"\nPing / Pong "+getPings();
+        String info = "file content: "+readLastLine(INFO_FILE);
+        String message = "env variable: MESSAGE="+envMessage;
+        String log=LocalDateTime.now() + " : " + randomString;
+        String pings= "Ping / Pong "+getPings();
+        return info + "\n" + message + "\n" + log + "\n" + pings;
     }
 
     private int getPings() {
