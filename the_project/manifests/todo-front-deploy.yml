@@ -14,7 +14,10 @@ spec:
     spec:
       containers:
         - name: todo-front
-          image: ahmedevops/todo:2.2
+          image: ahmedevops/todo:2.6
+          envFrom:
+            - configMapRef:
+                name: todo-env-config
           volumeMounts:
             - mountPath: /app/images
               name: image-cache

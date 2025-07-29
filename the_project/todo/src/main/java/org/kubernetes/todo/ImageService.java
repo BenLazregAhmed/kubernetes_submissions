@@ -1,6 +1,7 @@
 package org.kubernetes.todo;
 
 import jakarta.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +14,7 @@ import java.time.Instant;
 
 @Service
 public class ImageService {
-
-    private static final String IMAGE_URL = "https://picsum.photos/1200";
+    private static final String IMAGE_URL="https://picsum.photos/1200";
     private static final Path IMAGE_DIR = Paths.get("/app/images");
     private static final Path CURRENT_IMAGE = IMAGE_DIR.resolve("current.jpg");
     private static final Path TIMESTAMP_FILE = IMAGE_DIR.resolve("timestamp.txt");

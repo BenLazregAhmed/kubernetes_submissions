@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>📸 Kubernetes Image Viewer</title>
@@ -97,7 +97,7 @@
 <h1>🚀 Random Image from Picsum (Cached)</h1>
 
 <div class="image-container">
-<!--    <img src="/images" alt="Random Cached Image">-->
+    <!-- <img src="/images" alt="Random Cached Image"> -->
 </div>
 
 <div class="info">
@@ -117,8 +117,8 @@
     </ul>
 </div>
 
-<script>
-    const apiUrl = '${API_URL}'; // Change if hosted elsewhere
+<script th:inline="javascript">
+    const apiUrl = /*[[${apiUrl}]]*/ 'http://default-url';
 
     async function loadTodos() {
         const res = await fetch(apiUrl);
