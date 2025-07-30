@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: post-to-todo
+  namespace: project
+spec:
+  schedule: "*/30 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: poster
+              image: alpine/curl:latest
+              command: ["/bin/sh", "-c"]
+              args:
+                - |
+                  json='{"todo": "read this : https://en.wikipedia.org/wiki/Special:Random"}'
+                  curl -X POST http://todo-back-svc:8090/api/todos \
+                       -H "Content-Type: application/json" \
+                       -d "$json"
+          restartPolicy: OnFailure
