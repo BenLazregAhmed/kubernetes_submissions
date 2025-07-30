@@ -10,14 +10,14 @@
         <module name="todo" />
       </profile>
       <profile name="Annotation profile for ping-pong" enabled="true">
-        <sourceOutputDir name="../the_project/ping-pong/target/generated-sources/annotations" />
-        <sourceTestOutputDir name="../the_project/ping-pong/target/generated-test-sources/test-annotations" />
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
         </processorPath>
         <module name="ping-pong" />
+        <module name="todo-backend" />
       </profile>
       <profile name="Annotation profile for log-output" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -28,15 +28,6 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
         </processorPath>
         <module name="log-output" />
-      </profile>
-      <profile name="Annotation profile for todo-backend" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
-        </processorPath>
-        <module name="todo-backend" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

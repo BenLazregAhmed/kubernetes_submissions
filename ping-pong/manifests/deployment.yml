@@ -14,4 +14,7 @@ spec:
     spec:
       containers:
         - name: ping-pong
-          image: ahmedevops/ping-pong:2.1
+          image: ahmedevops/ping-pong:2.7
+          envFrom:
+            - configMapRef:
+                name: ping-pong-env-config

@@ -7,13 +7,6 @@ spec:
   rules:
     - http:
         paths:
-          - path: /logOutput
-            pathType: Prefix
-            backend:
-              service:
-                name: log-service
-                port:
-                  number: 8080
           - path: /pingpong
             pathType: Prefix
             backend:
