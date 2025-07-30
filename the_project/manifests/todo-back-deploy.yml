@@ -13,5 +13,8 @@ spec:
         app: todo-back
     spec:
       containers:
-        - name: todo-front
-          image: ahmedevops/todo-backend:2.2
+        - name: todo-back
+          image: ahmedevops/todo-backend:2.8
+          envFrom:
+            - configMapRef:
+                name: todo-back-env-config

@@ -1,18 +1,22 @@
 package org.kubernetes.todo;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class TodoService {
-    private List<String>todos=new ArrayList<>();
+    private final TodosRepo todosRepo;
     public List<String> getAll() {
-        return todos;
+        return todosRepo.findAll().stream().map(
+                Todo::getTodo
+        ).toList();
     }
 
     public void addTodo(String todo) {
-        todos.add(todo);
+        todosRepo.save(Todo.builder().todo(todo).build());
     }
 }
